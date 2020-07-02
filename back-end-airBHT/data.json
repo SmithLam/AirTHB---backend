@@ -1,0 +1,13 @@
+{
+  "title": "Trip to go cooking ",
+  "duration": 5,
+  "description": "We go to Cu Chi Vietnam",
+  "country": "HCM, Vietnam",
+  "pictureURL": ["https://a0.muscache.com/im/pictures/lombard/MtTemplate-1746293-media_library/original/5c2fdc86-6f16-4ad2-8788-372ff85a4113.jpeg?aki_policy=exp_md","https://a0.muscache.com/im/pictures/lombard/MtTemplate-1746293-media_library/original/75578928-27fe-4055-bc50-5ee36ffae190.jpeg?aki_policy=exp_md"],
+  "items": ["For 2 People", "2 potatoes about 200 gr"],
+  "groupS": 3,
+  "price": 50,
+  "age":3,
+  "tags": ["biking", "hiking"]
+}
+
