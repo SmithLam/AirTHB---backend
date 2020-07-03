@@ -5,22 +5,23 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 exports.getExperiences = catchAsync(async (req, res, next) => {
-    const filters = { ...req.query };
-    const paginationKeys = ["limit", "page", "sort"];
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 10;
-    const skip = (page - 1) * limit;
-    paginationKeys.map((el) => delete filters[el]);
-    console.log(filters);
-    const q = Experiences.find(filters).populate("tags").populate("host");
-    const exp = await q.limit(limit).skip(skip);
-    const countExperiences = await Exp.find(filters).countDocuments();
-    if (req.query.page && skip > countExperiences)
-      return next(new AppError(400, "Page number out of range"));
-    return res.status(200).json({
-      status: "OK",
-      data: exp,
-    });
+  const filters = { ...req.query };
+  const paginationKeys = ["limit", "page", "sort"];
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 10;
+  const skip = (page - 1) * limit;
+  paginationKeys.map((el) => delete filters[el]);
+  console.log(filters);
+  const q = Experiences.find(filters).populate("tags").populate("host");
+  const exp = await q.limit(limit).skip(skip);
+  const countExperiences = await Experiences.find(filters).countDocuments();
+  if (req.query.page && skip > countExperiences) {
+    return next(new AppError(400, "Page number out of range"));
+  }
+  return res.status(200).json({
+    status: "OK",
+    data: exp,
+  });
 });
 
 exports.getSingleExperience = async (req, res, next) => {
