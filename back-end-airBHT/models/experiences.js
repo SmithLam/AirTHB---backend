@@ -6,14 +6,14 @@ const Schema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
       minlength: 5,
       maxlength: 100,
     },
     duration: {
       type: Number,
-      required: true,
+      // required: true,
     },
     groupS: {
       type: Number,
@@ -23,7 +23,7 @@ const Schema = new mongoose.Schema(
       type: String,
       trim: true,
       mixlength: 5,
-      maxlength: 500,
+      maxlength: 1000,
     },
     // host: {
     //   type: mongoose.Schema.ObjectId,

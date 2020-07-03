@@ -19,14 +19,14 @@ schema.statics.convertToObject = async function (arr) {
     let bar = await this.findOne({
       tag: item.toLowerCase().trim(),
     });
-    if (bar) {
-      return bar;
+    if (!bar) {
+      bar = await this.create({
+        tag: item.toLowerCase().trim(),
+      });
     }
-    bar = await this.create({
-      tag: item.toLowerCase().trim(),
-    });
+    return bar;
   });
-  let result = Promise.all(foo);
+  let result = await Promise.all(foo);
   return result;
 };
 

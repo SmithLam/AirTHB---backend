@@ -7,6 +7,7 @@ var indexRouter = require("./routes/index");
 // var usersRouter = require("./routes/users");
 // var authRouter = require("./routes/auth");
 var expRouter = require("./routes/experiences");
+var testRouter = require("./routes/test")
 // var reviewRouter = require("./routes/review");
 const mongoose = require("mongoose");
 const { stack } = require("./routes/users");
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/experiences", expRouter);
+app.use("/test", testRouter)
 
 app.route("*").all(function (req, res, next) {
   next(new AppError(404, "Route not found")); //go straight to the middleware
