@@ -8,7 +8,7 @@ exports.getExperiences = async (req, res, next) => {
     const paginationKeys = ["limit", "page", "sort"];
     paginationKeys.map((el) => delete filters[el]);
     console.log(filters);
-    const q = Experiences.find({}).populate("tags").populate("host");
+    const q = Experiences.find(filters).populate("tags").populate("host");
     const exp = await q.limit(20);
     return res.status(200).json({
       status: "OK",
