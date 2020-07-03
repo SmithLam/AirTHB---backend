@@ -1,41 +1,6 @@
 const Experiences = require("../models/experiences");
 const Tag = require("../models/tag");
 const { deleteOne, updateOne } = require("./handleFactory");
-const faker = require("faker")
-
-const tags = ["cooking", "cleaning", "dishwashing", "hiking", "cycling", "dating", "music", "culture", "magic tricks", "sports"]
-
-// {
-//   "title":,
-//   "duration": ,
-//   "description": ,
-//   "country":,
-//   "pictureURL": [],
-//   "items": [],
-//   "groupS":,
-//   "price": ,
-//   "age":,
-//   "tags": []
-// },
-
-
-
-var randomName = faker.name.findName(); // Rowan Nikolaus
-var randomPicture = faker.image.people()
-var randomGroupS = Math.floor(Math.random() * 10)
-var randomDuration = Math.floor(Math.random() * 10)
-var randomPrice = Math.floor(Math.random() * 100)
-var randomAge = Math.floor(Math.random() * 25)
-var randomTag = tags[Math.floor(Math.random() * 10)]
-var randomCountry = faker.address.country()
-var randomItem = faker.lorem.sentence()
-var randomDescription = faker.lorem.paragraphs()
-// var randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
-
-
-
-
-
 
 exports.getExperiences = async (req, res, next) => {
   try {
@@ -43,9 +8,8 @@ exports.getExperiences = async (req, res, next) => {
     const paginationKeys = ["limit", "page", "sort"];
     paginationKeys.map((el) => delete filters[el]);
     console.log(filters);
-
     const q = Experiences.find({}).populate("tags").populate("host");
-    const exp = await q.limit(10);
+    const exp = await q.limit(20);
     return res.status(200).json({
       status: "OK",
       data: exp,
