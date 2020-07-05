@@ -8,7 +8,7 @@ exports.getExperiences = catchAsync(async (req, res, next) => {
   const filters = { ...req.query };
   const paginationKeys = ["limit", "page", "sort"];
   const page = req.query.page * 1 || 1;
-  const limit = req.query.limit * 1 || 10;
+  const limit = req.query.limit * 1 || 60;
   const skip = (page - 1) * limit;
   paginationKeys.map((el) => delete filters[el]);
   console.log(filters);
