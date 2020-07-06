@@ -4,6 +4,8 @@ const { deleteOne, updateOne } = require("./handleFactory");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
+const PAGE_SIZE = 10;
+
 exports.getExperiences = catchAsync(async (req, res, next) => {
   const filters = { ...req.query };
   console.log(req.query);
@@ -20,9 +22,9 @@ exports.getExperiences = catchAsync(async (req, res, next) => {
     return next(new AppError(400, "Page number out of range"));
   }
   return res.status(200).json({
+    dataLength: countExperiences,
     status: "OK",
     data: exp,
-    dataLength: countExperiences,
   });
 });
 
