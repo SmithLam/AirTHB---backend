@@ -2,25 +2,24 @@ const Tag = require("../models/tag");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-// exports.deleteOne = (Model) =>
-//   catchAsync(async (req, res, next) => {
-//     let filteredObj = {};
-//     if (Model.modelName === "Experiences") {
-//       (filteredObj._id = req.params.expID)
-//         // (filteredObj.host = req.user._id);
-//     } else if (Model.modelName === "Review") {
-//       (filteredObj._id = req.params.revID), (filteredObj.author = req.user._id);
-//     }
-//     console.log(filteredObj);
-//     const doc = await Model.findOneAndDelete(filteredObj);
-//     console.log(Model);
-//     console.log(doc);
-//     if (!doc) {
-//       return next(new AppError("404", "No document found"));
-//     }
-//     doc.save();
-//     res.status(204).end();
-//   });
+exports.deleteOne = (Model) =>catchAsync(async (req, res, next) => {
+    let filteredObj = {};
+    if (Model.modelName === "Experiences") {
+      (filteredObj._id = req.params.expID)
+        // (filteredObj.host = req.user._id);
+    } else if (Model.modelName === "Review") {
+      (filteredObj._id = req.params.revID), (filteredObj.author = req.user._id);
+    }
+    console.log(filteredObj);
+    const doc = await Model.findOneAndDelete(filteredObj);
+    console.log(Model);
+    console.log(doc);
+    if (!doc) {
+      return next(new AppError("404", "No document found"));
+    }
+    doc.save();
+    res.status(204).end();
+  });
 
 //  obj.title = faker.lorem.sentence();
 //  obj.pictureURL = [
