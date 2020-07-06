@@ -3,7 +3,7 @@ const AppError = require("../utils/appError");
 const Tag = require("../models/tag");
 
 exports.getTags = catchAsync(async (req, res, next) => {
-  const allDataLength = await (await Tag.find()).length;
+  const allDataLength = await Tag.countDocuments();
   // const filters = { ...req.query };
   //   const paginationKeys = ["limit", "page", "sort"];
   //   const page = req.query.page * 1 || 1;

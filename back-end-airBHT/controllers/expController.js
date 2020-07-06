@@ -5,9 +5,8 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 exports.getExperiences = catchAsync(async (req, res, next) => {
-  const allDataLength=await (await Experiences.find()).length
   const filters = { ...req.query };
-  console.log(req.query)
+  console.log(req.query);
   const paginationKeys = ["limit", "page", "sort"];
   const page = req.query.page * 1 || 1;
   const limit = req.query.limit * 1 || 10;
@@ -23,7 +22,7 @@ exports.getExperiences = catchAsync(async (req, res, next) => {
   return res.status(200).json({
     status: "OK",
     data: exp,
-    dataLength:allDataLength
+    dataLength: countExperiences,
   });
 });
 
