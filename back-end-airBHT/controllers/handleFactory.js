@@ -6,7 +6,8 @@ exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     let filteredObj = {};
     if (Model.modelName === "Experiences") {
-      (filteredObj._id = req.params.expID), (filteredObj.host = req.user._id);
+      (filteredObj._id = req.params.expID)
+        // (filteredObj.host = req.user._id);
     } else if (Model.modelName === "Review") {
       (filteredObj._id = req.params.revID), (filteredObj.author = req.user._id);
     }
@@ -21,6 +22,33 @@ exports.deleteOne = (Model) =>
     res.status(204).end();
   });
 
+//  obj.title = faker.lorem.sentence();
+//  obj.pictureURL = [
+//    faker.image.image(),
+//    faker.image.image(),
+//    faker.image.image(),
+//    faker.image.image(),
+//    faker.image.image(),
+//  ];
+//  obj.groupS = Math.floor(Math.random() * 15);
+//  obj.duration = Math.floor(Math.random() * 10);
+//  obj.price = Math.floor(Math.random() * 100);
+//  obj.age = Math.floor(Math.random() * 25);
+//  obj.tags = await Tag.convertToObject([
+//    tags[Math.floor(Math.random() * 10)],
+//    tags[Math.floor(Math.random() * 10)],
+//  ]);
+//  obj.country = faker.address.country();
+//  obj.items = [
+//    faker.lorem.sentence(),
+//    faker.lorem.sentence(),
+//    faker.lorem.sentence(),
+//    faker.lorem.sentence(),
+//  ];
+//  obj.description = faker.lorem.paragraphs();
+
+
+
 exports.updateOne = (Model) => async (req, res, next) => {
   try {
     let filteredObj = {};
@@ -29,7 +57,11 @@ exports.updateOne = (Model) => async (req, res, next) => {
     
       (filteredObj._id = req.params.expID),
         // (filteredObj.host = req.user._id),
+<<<<<<< HEAD
         (allows = ["title", "description", "tags"]);
+=======
+        (allows = ["title", "description", "tags", "duration", "groupS", "country", "age", "pictureURL", "price", "items"]);
+>>>>>>> 982ac2862b146768becbe817fc009778bd563756
       if (req.body.tags) {
         req.body.tags = await Tag.convertToObject(req.body.tags);
       }
