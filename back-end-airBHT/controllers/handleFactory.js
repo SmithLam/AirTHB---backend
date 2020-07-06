@@ -58,7 +58,7 @@ exports.updateOne = (Model) => async (req, res, next) => {
         // (filteredObj.host = req.user._id),
         (allows = ["title", "description", "tags", "duration", "groupS", "country", "age", "pictureURL", "price", "items"]);
       if (req.body.tags) {
-        req.body.tags = await Tag.convertToObject(req.body.tags);
+        req.body.tags = await Tag.convertToObject(req.body.tags.split(","));
       }
     } else if (Model.modelName === "Review") {
       (filteredObj._id = req.params.revID),
