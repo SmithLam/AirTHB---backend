@@ -5,6 +5,7 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 exports.getExperiences = catchAsync(async (req, res, next) => {
+  
   const allDataLength=await (await Experiences.find()).length
   const filters = { ...req.query };
   console.log(req.query)

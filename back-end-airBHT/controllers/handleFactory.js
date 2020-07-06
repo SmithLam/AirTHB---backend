@@ -26,8 +26,9 @@ exports.updateOne = (Model) => async (req, res, next) => {
     let filteredObj = {};
     let allows = []; //the fields that we allow the user to change, depending on the Model
     if (Model.modelName === "Experiences") {
+    
       (filteredObj._id = req.params.expID),
-        (filteredObj.host = req.user._id),
+        // (filteredObj.host = req.user._id),
         (allows = ["title", "description", "tags"]);
       if (req.body.tags) {
         req.body.tags = await Tag.convertToObject(req.body.tags);
