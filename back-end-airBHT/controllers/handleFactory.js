@@ -6,7 +6,8 @@ exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     let filteredObj = {};
     if (Model.modelName === "Experiences") {
-      (filteredObj._id = req.params.expID), (filteredObj.host = req.user._id);
+      (filteredObj._id = req.params.expID),
+        // (filteredObj.host = req.user._id);
     } else if (Model.modelName === "Review") {
       (filteredObj._id = req.params.revID), (filteredObj.author = req.user._id);
     }
