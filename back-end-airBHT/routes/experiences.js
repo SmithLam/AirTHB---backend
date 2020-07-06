@@ -1,3 +1,6 @@
+const router = require("express").Router({ mergeParams: true });
+
+
 const {
   getExperiences,
   getSingleExperience,
@@ -7,8 +10,6 @@ const {
 } = require("../controllers/expController");
 
 // const { loginRequired, hostRequired } = require("../middleware/auth");
-
-const router = require("express").Router({ mergeParams: true });
 
 router.route("/").get(getExperiences).post(createExperience);
 
