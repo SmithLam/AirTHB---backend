@@ -9,12 +9,14 @@ var indexRouter = require("./routes/index");
 var expRouter = require("./routes/experiences");
 var tagRouter = require("./routes/tags")
 var testRouter = require("./routes/test");
+var authRouter=require('./routes/auth')
 // var reviewRouter = require("./routes/review");
 const mongoose = require("mongoose");
 const { stack } = require("./routes/users");
 require("dotenv").config();
 // const passport = require("passport");
 const AppError = require("./utils/appError");
+
 
 mongoose
   .connect(
@@ -46,6 +48,7 @@ app.use("/users", usersRouter);
 app.use("/experiences", expRouter);
 app.use("/tags", tagRouter)
 app.use("/test", testRouter);
+app.use("/auth",authRouter)
 
 app.route("*").all(function (req, res, next) {
   next(new AppError(404, "Route not found")); //go straight to the middleware
